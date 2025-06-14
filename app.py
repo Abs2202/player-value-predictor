@@ -23,28 +23,28 @@ def load_model(pos):
 
 model = load_model(position)
 
-# Attribute sliders (must match features used in training)
-st.subheader("Enter Player Attributes")
-vision = st.slider("Vision", 0, 100, 70)
-short_passing = st.slider("Short Passing", 0, 100, 75)
-sprint_speed = st.slider("Sprint Speed", 0, 100, 80)
+# Streamlit sliders (input fields)
+playmaker_index = st.slider("Playmaker Index", 0.0, 100.0, 70.0)
+finisher_index = st.slider("Finisher Index", 0.0, 100.0, 72.0)
+defender_index = st.slider("Defender Index", 0.0, 100.0, 65.0)
+speed_index = st.slider("Speed Index", 0.0, 100.0, 75.0)
+technical_index = st.slider("Technical Index", 0.0, 100.0, 68.0)
+physical_index = st.slider("Physical Index", 0.0, 100.0, 80.0)
 composure = st.slider("Composure", 0, 100, 78)
-strength = st.slider("Strength", 0, 100, 85)
-reactions = st.slider("Reactions", 0, 100, 82)
-ball_control = st.slider("Ball Control", 0, 100, 75)
-age = st.slider("Age", 16, 45, 24)  # Only if used in your model!
+age = st.slider("Age", 16, 45, 24)
 
-# Create input dataframe
+# Input DataFrame (MUST match model training column names)
 input_df = pd.DataFrame([{
-    "Vision": vision,
-    "Short passing": short_passing,
-    "Sprint speed": sprint_speed,
+    "Playmaker_Index": playmaker_index,
+    "Finisher_Index": finisher_index,
+    "Defender_Index": defender_index,
+    "Speed_Index": speed_index,
+    "Technical_Index": technical_index,
+    "Physical_Index": physical_index,
     "Composure": composure,
-    "Strength": strength,
-    "Reactions": reactions,
-    "Ball control": ball_control,
-    "Age": age  # Remove if not used
+    "Age": age
 }])
+
 
 # Predict and show results
 if st.button("Predict Market Value"):
