@@ -23,26 +23,26 @@ def load_model(pos):
 
 model = load_model(position)
 
-# Streamlit sliders (input fields)
+# Streamlit sliders
+reactions = st.slider("Reactions", 0, 100, 78)
+composure = st.slider("Composure", 0, 100, 80)
 playmaker_index = st.slider("Playmaker Index", 0.0, 100.0, 70.0)
 finisher_index = st.slider("Finisher Index", 0.0, 100.0, 72.0)
-defender_index = st.slider("Defender Index", 0.0, 100.0, 65.0)
-speed_index = st.slider("Speed Index", 0.0, 100.0, 75.0)
-technical_index = st.slider("Technical Index", 0.0, 100.0, 68.0)
-physical_index = st.slider("Physical Index", 0.0, 100.0, 80.0)
-composure = st.slider("Composure", 0, 100, 78)
-age = st.slider("Age", 16, 45, 24)
+defender_index = st.slider("Defender Index", 0.0, 100.0, 68.0)
+physical_index = st.slider("Physical Index", 0.0, 100.0, 75.0)
+technical_index = st.slider("Technical Index", 0.0, 100.0, 74.0)
+speed_index = st.slider("Speed Index", 0.0, 100.0, 77.0)
 
-# Input DataFrame (MUST match model training column names)
+# Input DataFrame (must match model features exactly)
 input_df = pd.DataFrame([{
+    "Reactions": reactions,
+    "Composure": composure,
     "Playmaker_Index": playmaker_index,
     "Finisher_Index": finisher_index,
     "Defender_Index": defender_index,
-    "Speed_Index": speed_index,
-    "Technical_Index": technical_index,
     "Physical_Index": physical_index,
-    "Composure": composure,
-    "Age": age
+    "Technical_Index": technical_index,
+    "Speed_Index": speed_index
 }])
 
 
